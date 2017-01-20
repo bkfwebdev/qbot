@@ -1,0 +1,14 @@
+{
+  "name": "qbot",
+  "version": "1.0.0",
+  "description": "twitter quote bot project",
+  "main": "gobot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bryant K. Feld",
+  "license": "ISC",
+  "dependencies": {
+    "twit": "^2.2.5"
+  }
+}
