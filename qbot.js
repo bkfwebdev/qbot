@@ -1,9 +1,16 @@
 console.log("qbot is the shiznit");
+var tweet = {
+    status:'qbot is the shiznit,powered by node.js #bkfwebdev'
+};
 var Twit = require('twit');
-var T = new Twit({
-  consumer_key:         '...',
-  consumer_secret:      '...',
-  access_token:         '...',
-  access_token_secret:  '...',
-  timeout_ms:           60*1000,  // optional HTTP request timeout to apply to all requests. 
-});
+var config = require('./config');
+var T = new Twit(config);
+function tweeted(err, data, response){
+    if (err){console.log('something went wrong son!');
+            console.log(err);
+            console.log(data);}
+    else{
+        console.log('you got this my ninja');
+    }
+}
+T.post('statuses/update',tweet , tweeted);
