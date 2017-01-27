@@ -1,16 +1,22 @@
 console.log("qbot is the shiznit");
-var tweet = {
-    status:'qbot is the shiznit,powered by node.js #bkfwebdev'
-};
+var request = require("request");
+var quoteString = "";
+var tweet = {};
 var Twit = require('twit');
 var config = require('./config');
 var T = new Twit(config);
 function tweeted(err, data, response){
     if (err){console.log('something went wrong son!');
             console.log(err);
-            console.log(data);}
+            console.log(data);
+            }
     else{
         console.log('you got this my ninja');
     }
 }
-T.post('statuses/update',tweet , tweeted);
+request('http://quotes.stormconsultancy.co.uk/random.json', function(error, response, data) {
+    var quoteObject = JSON.parse(data);
+    quoteString = quoteObject.quote 
+   tweet.status = quoteString
+   T.post('statuses/update',tweet , tweeted);
+});
